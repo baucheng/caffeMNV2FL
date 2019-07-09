@@ -406,9 +406,10 @@ message LayerParameter {
   optional TileParameter tile_param = 138;
   optional WindowDataParameter window_data_param = 129;
 
-  // Focal Loss layer
+  // Focal Loss layer with sigmoid
   optional FocalLossParameter focal_loss_param = 147; 
-
+  // Focal Loss layer with softmass
+  optional SoftmaxFocalLossParameter softmax_focal_loss_param = 148; //(XXX is determined by your own caffe)
 
 }
 
@@ -416,6 +417,11 @@ message LayerParameter {
 message FocalLossParameter {
   optional float alpha = 1 [default = 0.25]; // The scale
   optional float gamma = 2 [default = 2]; // The exponent
+}
+
+message SoftmaxFocalLossParameter{
+  optional float alpha = 1 [default = 0.25];
+  optional float gamma = 2 [default = 2];
 }
 
 
